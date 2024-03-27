@@ -1,29 +1,38 @@
 
 import React, { useState } from 'react';
-import PlayerService from './playersService';
 
-function PlayerAddForm() {
+
+function PlayerAddForm({ playerService }) {
     const [name, setName] = useState('');
     const [team, setTeam] = useState('');
     const [ppg, setPpg] = useState('');
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const newPlayer = { name, team, ppg: parseFloat(ppg) };
-        PlayerService.addPlayer(newPlayer);
+        playerService.addPlayer(newPlayer);
         setName('');
         setTeam('');
         setPpg('');
+
     };
 
     return (
-        <div>
-            <h1>Add Player</h1>
+        <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '400px', margin: 'auto' }}>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Add Player</h1>
             <form onSubmit={handleSubmit}>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
-                <input type="text" value={team} onChange={(e) => setTeam(e.target.value)} placeholder="Team" required />
-                <input type="number" value={ppg} onChange={(e) => setPpg(e.target.value)} placeholder="PPG" required />
-                <button type="submit">Add Player</button>
+                <div style={{ marginBottom: '15px' }}>
+                    <input style={{ width: '100%', padding: '10px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px' }} type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <input style={{ width: '100%', padding: '10px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px' }} type="text" value={team} onChange={(e) => setTeam(e.target.value)} placeholder="Team" required />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <input style={{ width: '100%', padding: '10px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px' }} type="number" value={ppg} onChange={(e) => setPpg(e.target.value)} placeholder="PPG" required />
+                </div>
+                <button style={{ width: '100%', padding: '10px', fontSize: '16px', borderRadius: '5px', border: 'none', background: '#007bff', color: '#fff', cursor: 'pointer' }} type="submit">Save Changes</button>
             </form>
         </div>
     );

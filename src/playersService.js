@@ -1,14 +1,31 @@
-
 import PlayerRepo from './playerRepo';
 
-const playerRepo = new PlayerRepo();
+class PlayerService {
+    constructor() {
+        this.playerRepo = new PlayerRepo();
 
-const PlayerService = {
-    getallPlayers: () => playerRepo.getAll(),
-    getPlayerbyId: (id) => playerRepo.getById(id),
-    addPlayer: (player) => playerRepo.add(player),
-    updatePlayer: (id, playerUpdated) => playerRepo.update(id, playerUpdated),
-    deletePlayer: (id) => playerRepo.delete(id)
-};
+    }
+
+    getallPlayers() {
+        return this.playerRepo.getAll();
+    }
+
+    getPlayerbyId(id) {
+        return this.playerRepo.getById(id);
+    }
+
+    addPlayer(player) {
+        player.id = this.playerRepo.getNextID();
+        this.playerRepo.add(player);
+    }
+
+    updatePlayer(id, playerUpdated) {
+        this.playerRepo.update(id, playerUpdated);
+    }
+
+    deletePlayer(id) {
+        this.playerRepo.delete(id);
+    }
+}
 
 export default PlayerService;

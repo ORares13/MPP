@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import PlayerService from './playersService';
 
-function UpdatePlayerForm({ playerId, onSave, refreshPlayers }) {
+
+function UpdatePlayerForm({ playerService, playerId, onSave, refreshPlayers }) {
     const [name, setName] = useState('');
     const [team, setTeam] = useState('');
     const [ppg, setPpg] = useState('');
 
     useEffect(() => {
-        const fetchedPlayer = PlayerService.getPlayerbyId(playerId);
+        const fetchedPlayer = playerService.getPlayerbyId(playerId);
         setName(fetchedPlayer.name);
         setTeam(fetchedPlayer.team);
         setPpg(fetchedPlayer.ppg.toString());
+
     }, [playerId]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const updatedPlayer = { name, team, ppg: parseFloat(ppg) };
-        PlayerService.updatePlayer(playerId, updatedPlayer);
+        playerService.updatePlayer(playerId, updatedPlayer);
         onSave();
         refreshPlayers();
     };
@@ -36,6 +37,7 @@ function UpdatePlayerForm({ playerId, onSave, refreshPlayers }) {
                 </div>
                 <button style={{ width: '100%', padding: '10px', fontSize: '16px', borderRadius: '5px', border: 'none', background: '#007bff', color: '#fff', cursor: 'pointer' }} type="submit">Save Changes</button>
             </form>
+
         </div>
     );
 }

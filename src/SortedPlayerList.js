@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import PlayerService from './playersService';
 
-function SortedPlayerList() {
+
+function SortedPlayerList({ playerService }) {
     const [sortedPlayers, setSortedPlayers] = useState([]);
 
     useEffect(() => {
-        const sorted = PlayerService.getallPlayers().sort((a, b) => b.ppg - a.ppg);
+        const sorted = playerService.getallPlayers().sort((a, b) => b.ppg - a.ppg);
         setSortedPlayers(sorted);
     }, []);
 

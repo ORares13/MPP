@@ -4,21 +4,24 @@ import PlayerAddForm from './PlayerAddForm';
 import ViewPlayerDetails from './ViewPlayerDetails';
 import SortedPlayerList from './SortedPlayerList';
 
-function App() {
+
+function App({ playerService }) {
+
   const [currentPage, setCurrentPage] = useState('PlayerList');
 
   const renderPage = () => {
     switch (currentPage) {
       case 'AddPlayerForm':
-        return <PlayerAddForm />;
+        return <PlayerAddForm playerService={playerService} />;
       case 'SortedPlayersList':
-        return <SortedPlayerList />;
+        return <SortedPlayerList playerService={playerService} />;
       case 'ViewPlayerDetails':
-        return <ViewPlayerDetails />;
+        return <ViewPlayerDetails playerService={playerService} />;
       default:
-        return <PlayerList />;
+        return <PlayerList playerService={playerService} />;
     }
   };
+
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', textAlign: 'center' }}>

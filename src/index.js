@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PlayerService from './playersService';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+let playerService = new PlayerService();
 root.render(
   <React.StrictMode>
-    <App />
+    <App playerService={playerService} />
   </React.StrictMode>
 );
 
