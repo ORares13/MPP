@@ -16,7 +16,7 @@ class PlayerRepo {
     }
 
     getById(id) {
-        return this.players.find(car => car.id === id);
+        return this.players.find(player => player.id === id);
     }
 
     add(player) {

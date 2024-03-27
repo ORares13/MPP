@@ -10,7 +10,6 @@ function PlayerAddForm({ playerService }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const newPlayer = { name, team, ppg: parseFloat(ppg) };
         playerService.addPlayer(newPlayer);
         setName('');
