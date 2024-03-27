@@ -18,14 +18,14 @@ describe('PlayerAddForm', () => {
         const ppgInput = getByPlaceholderText('PPG');
         const saveButton = getByText('Save Changes');
 
-        fireEvent.change(nameInput, { target: { value: 'Kevin Durant' } });
+        fireEvent.change(nameInput, { target: { value: 'Durant' } });
         fireEvent.change(teamInput, { target: { value: 'Brooklyn Nets' } });
         fireEvent.change(ppgInput, { target: { value: '20' } });
 
         fireEvent.click(saveButton);
 
         expect(playerServiceMock.addPlayer).toHaveBeenCalledWith({
-            name: 'Kevin Durant',
+            name: 'Durant',
             team: 'Brooklyn Nets',
             ppg: 20,
         });

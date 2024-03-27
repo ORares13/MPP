@@ -12,7 +12,7 @@ function UpdatePlayerForm({ playerService, playerId, onSave, refreshPlayers }) {
         setTeam(fetchedPlayer.team);
         setPpg(fetchedPlayer.ppg.toString());
 
-    }, [playerId]);
+    }, [playerService, playerId]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

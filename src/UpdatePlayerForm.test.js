@@ -2,19 +2,19 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import UpdatePlayerForm from './UpdatePlayerForm';
 import PlayerService from './playersService';
-import PlayerRepo from './playerRepo'; // Import PlayerRepo
-import Players from './players'; // Import Players class
+import PlayerRepo from './playerRepo';
+import Players from './players';
 
-const playerServiceMock = new PlayerService(); // Use actual PlayerService instance
+const playerServiceMock = new PlayerService();
 
 describe('UpdatePlayerForm', () => {
     it('fetches player data and updates player on form submit', () => {
-        const playerRepo = new PlayerRepo(); // Create an instance of PlayerRepo
-        playerServiceMock.playerRepo = playerRepo; // Assign PlayerRepo instance to playerServiceMock
+        const playerRepo = new PlayerRepo();
+        playerServiceMock.playerRepo = playerRepo;
 
         const onSaveMock = jest.fn();
         const refreshPlayersMock = jest.fn();
-        const playerId = 1; // Example integer player ID
+        const playerId = 1;
 
         const { getByPlaceholderText, getByText } = render(
             <UpdatePlayerForm
@@ -36,14 +36,14 @@ describe('UpdatePlayerForm', () => {
 
         fireEvent.change(nameInput, { target: { value: 'Updated Player' } });
         fireEvent.change(teamInput, { target: { value: 'Updated Team' } });
-        fireEvent.change(ppgInput, { target: { value: '20' } });
+        fireEvent.change(ppgInput, { target: { value: '25' } });
 
         fireEvent.click(saveButton);
 
 
         expect(playerServiceMock.playerRepo.players[0].name).toBe('Updated Player');
         expect(playerServiceMock.playerRepo.players[0].team).toBe('Updated Team');
-        expect(playerServiceMock.playerRepo.players[0].ppg).toBe(20);
+        expect(playerServiceMock.playerRepo.players[0].ppg).toBe(25);
 
         expect(onSaveMock).toHaveBeenCalled();
         expect(refreshPlayersMock).toHaveBeenCalled();

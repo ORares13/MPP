@@ -5,13 +5,13 @@ function SortedPlayerList({ playerService }) {
     const [sortedPlayers, setSortedPlayers] = useState([]);
 
     useEffect(() => {
-        const sorted = playerService.getallPlayers().sort((a, b) => b.ppg - a.ppg);
+        const sorted = playerService.getallPlayers().sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         setSortedPlayers(sorted);
     }, [playerService]);
 
     return (
         <div>
-            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Sorted Player List by PPG</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Sorted Player List by Name</h1>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                     <tr>

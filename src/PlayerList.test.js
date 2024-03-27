@@ -6,7 +6,7 @@ import PlayerService from './playersService';
 import PlayerRepo from './playerRepo';
 
 describe('PlayerList', () => {
-    it('renders player list with initial player data', () => {
+    it('renders player list with initial player list', () => {
         const playerServiceMock = new PlayerService();
         const { getByText } = render(<PlayerList playerService={playerServiceMock} />);
 

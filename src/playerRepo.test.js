@@ -18,7 +18,7 @@ describe('PlayerRepo', () => {
     });
 
     test('add should add a new player', () => {
-        const newPlayer = { id: 4, name: 'Kevin Durant', team: 'Brooklyn Nets', ppg: 29.5 };
+        const newPlayer = { id: 4, name: 'Durant', team: 'Brooklyn Nets', ppg: 29.5 };
         playerRepo.add(newPlayer);
         expect(playerRepo.getAll().length).toBe(4);
     });

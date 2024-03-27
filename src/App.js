@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PlayerList from './PlayerList';
 import PlayerAddForm from './PlayerAddForm';
-import ViewPlayerDetails from './ViewPlayerDetails';
 import SortedPlayerList from './SortedPlayerList';
+import SortedPlayerName from './SortedPlayerName';
 
 
 function App({ playerService }) {
@@ -15,8 +15,8 @@ function App({ playerService }) {
         return <PlayerAddForm playerService={playerService} />;
       case 'SortedPlayersList':
         return <SortedPlayerList playerService={playerService} />;
-      case 'ViewPlayerDetails':
-        return <ViewPlayerDetails playerService={playerService} />;
+      case 'SortedPlayerListName':
+        return <SortedPlayerName playerService={playerService} />;
       default:
         return <PlayerList playerService={playerService} />;
     }
@@ -29,7 +29,8 @@ function App({ playerService }) {
       <nav style={{ marginBottom: '20px' }}>
         <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('PlayerList')}>View Players</button>
         <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('AddPlayerForm')}>Add Player</button>
-        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('SortedPlayersList')}>Sort Players</button>
+        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('SortedPlayersList')}>Sort Players by PPG</button>
+        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('SortedPlayerListName')}>Sort Players by Name</button>
       </nav>
       <div style={{ border: '1px solid #ddd', borderRadius: '5px', padding: '20px' }}>
         {renderPage()}

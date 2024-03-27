@@ -17,7 +17,7 @@ describe('PlayerService', () => {
     });
 
     test('addPlayer should add a new player', () => {
-        const newPlayer = { id: 4, name: 'Kevin Durant', team: 'Brooklyn Nets', ppg: 29.5 };
+        const newPlayer = { id: 4, name: 'Durant', team: 'Brooklyn Nets', ppg: 29.5 };
         playerService.addPlayer(newPlayer);
         const players = playerService.getallPlayers();
         expect(players.length).toBe(4);
