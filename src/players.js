@@ -1,8 +1,8 @@
 class Players {
-    constructor(id, name, position, PPG) {
+    constructor(id, name, team, PPG) {
         this.id = id;
         this.name = name;
-        this.position = position;
+        this.team = team;
         this.ppg = PPG;
     }
 

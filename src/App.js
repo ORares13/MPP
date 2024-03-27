@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PlayerList from './PlayerList';
 import PlayerAddForm from './PlayerAddForm';
-import EditPlayerForm from './UpdatePlayerForm';
 import ViewPlayerDetails from './ViewPlayerDetails';
+import SortedPlayerList from './SortedPlayerList';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('PlayerList');
@@ -11,8 +11,8 @@ function App() {
     switch (currentPage) {
       case 'AddPlayerForm':
         return <PlayerAddForm />;
-      case 'UpdatePlayerForm':
-        return <EditPlayerForm />;
+      case 'SortedPlayersList':
+        return <SortedPlayerList />;
       case 'ViewPlayerDetails':
         return <ViewPlayerDetails />;
       default:
@@ -21,16 +21,19 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Player Management Application</h1>
-      <nav>
-        <button onClick={() => setCurrentPage('PlayerList')}>Player List</button>
-        <button onClick={() => setCurrentPage('AddPlayerForm')}>Add Player</button>
-        <button onClick={() => setCurrentPage('UpdatePlayerForm')}>Update Player</button>
+    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', textAlign: 'center' }}>
+      <h1 style={{ marginBottom: '20px' }}>Player Management Application</h1>
+      <nav style={{ marginBottom: '20px' }}>
+        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('PlayerList')}>View Players</button>
+        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('AddPlayerForm')}>Add Player</button>
+        <button style={{ marginRight: '10px' }} onClick={() => setCurrentPage('SortedPlayersList')}>Sort Players</button>
       </nav>
-      {renderPage()}
+      <div style={{ border: '1px solid #ddd', borderRadius: '5px', padding: '20px' }}>
+        {renderPage()}
+      </div>
     </div>
   );
 }
+
 
 export default App;
